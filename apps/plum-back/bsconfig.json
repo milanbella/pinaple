@@ -1,0 +1,25 @@
+{
+  "$schema": "https://raw.githubusercontent.com/rescript-lang/rescript-compiler/master/docs/docson/build-schema.json",
+  "name": "plum-back",
+  "namespace": true,
+  "version": "0.0.1",
+  "sources": [{
+    "dir" : "src",
+    "subdirs" : true
+  },{
+    "dir" : "c",
+    "subdirs" : true
+  }],
+  "package-specs": {
+    "module": "commonjs",
+    "in-source": true
+  },
+  "suffix": ".bs.js",
+  "bs-dependencies": [
+    "lib-web",
+    "@glennsl/bs-json"
+  ],
+  "warnings": {
+    "error" : "+101"
+  }
+}

@@ -1,0 +1,16 @@
+####{BSB GENERATED: NO EDIT
+B lib\bs
+FLG -open PlumBack
+FLG -ppx "C:\pok\pinaple\common\temp\node_modules\.pnpm\bs-platform@9.0.2\node_modules\bs-platform\win32\bsc.exe -as-ppx "
+S C:\pok\pinaple\common\temp\node_modules\.pnpm\bs-platform@9.0.2\node_modules\bs-platform\lib\ocaml
+B C:\pok\pinaple\common\temp\node_modules\.pnpm\bs-platform@9.0.2\node_modules\bs-platform\lib\ocaml
+FLG -w +a-4-9-20-40-41-42-50-61-102
+S C:\pok\pinaple\apps\plum-back\node_modules\lib-web\lib\ocaml
+B C:\pok\pinaple\apps\plum-back\node_modules\lib-web\lib\ocaml
+S C:\pok\pinaple\apps\plum-back\node_modules\@glennsl\bs-json\lib\ocaml
+B C:\pok\pinaple\apps\plum-back\node_modules\@glennsl\bs-json\lib\ocaml
+S c
+B lib\bs\c
+S src
+B lib\bs\src
+####BSB GENERATED: NO EDIT}

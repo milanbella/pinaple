@@ -63,3 +63,12 @@ common/deploy/
 common/temp/
 common/autoinstallers/*/.npmrc
 **/.rush/temp/
+
+# vim
+*.swp
+
+# rescript
+*.bs.js
+lib/web/lib/
+apps/plum-front/lib/
+apps/plum-back/lib/

@@ -457,5 +457,17 @@
     //   "projectFolder": "tools/my-toolchain",
     //   "reviewCategory": "tools"
     // }
+    {
+      "packageName": "lib-web",
+      "projectFolder": "lib/web"
+    },
+    {
+      "packageName": "plum-front",
+      "projectFolder": "apps/plum-front"
+    },
+    {
+      "packageName": "plum-back",
+      "projectFolder": "apps/plum-back"
+    }
   ]
 }
