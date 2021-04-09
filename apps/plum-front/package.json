@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "sync": "rsync ../c/*.res ./c",
-    "build": "bsb -make-world",
+    "build": "bsb -make-world 2>&1",
     "start": "bsb -make-world -w -ws _ ",
     "clean": "bsb -clean-world",
     "test": "echo \"Error: no test specified\" && exit 1",

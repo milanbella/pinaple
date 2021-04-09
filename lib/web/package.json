@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "bsb -make-world -clean-world",
+    "build": "bsb -make-world -clean-world 2>&1",
     "start": "bsb -make-world -clean-world -w"
   },
   "author": "",

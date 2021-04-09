@@ -6,7 +6,7 @@
     "sync": "rsync ../c/*.res ./c",
     "start": "node ./bin/www",
     "start:debug": "node --inspect-brk ./bin/www",
-    "build": "bsb -make-world",
+    "build": "bsb -make-world 2>&1",
     "clean": "bsb -clean-world"
   },
   "dependencies": {
