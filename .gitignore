@@ -68,7 +68,5 @@ common/autoinstallers/*/.npmrc
 *.swp
 
 # rescript
-*.bs.js
 lib/web/lib/
 apps/plum-front/lib/
-apps/plum-back/lib/

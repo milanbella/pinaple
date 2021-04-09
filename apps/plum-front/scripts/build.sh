@@ -1,15 +1,11 @@
 set -xe
-rm -rf node_modules
-rm -f package-lock.json
-npm install
-rm -rf ../b/public
-mkdir ../b/public
-cp html/*.html ../b/public/
-cp -r locales/ ../b/public/
+rm -rf ../plum-back/public
+mkdir ../plum-back/public
+cp html/*.html ../plum-back/public/
+cp -r locales/ ../plum-back/public/
 npm run clean
-npm run sync
 npm run build
 npm run webpack
 npm run css-build
-cp -r assets/* ../b/public/
+cp -r assets/* ../plum-back/public/
 

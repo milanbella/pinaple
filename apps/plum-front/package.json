@@ -7,7 +7,7 @@
     "start": "bsb -make-world -w -ws _ ",
     "clean": "bsb -clean-world",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "css-build": "node-sass --omit-source-map-url -o ../b/public sass/styles.scss",
+    "css-build": "node-sass --omit-source-map-url -o ../plum-back/public sass/styles.scss",
     "css-watch": "css-build -- --watch",
     "css-start": "css-watch",
     "webpack": "webpack --mode=development --config webpack.config.js"

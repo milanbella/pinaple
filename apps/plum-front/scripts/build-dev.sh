@@ -1,7 +1,6 @@
 set -xe
-npm run sync
 npm run build
 npm run webpack
-cp html/*.html ../b/public/
-cp -r locales/ ../b/public/
-cp -rf assets/* ../b/public/
+cp html/*.html ../plum-back/public/
+cp -r locales/ ../plum-back/public/
+cp -rf assets/* ../plum-back/public/
