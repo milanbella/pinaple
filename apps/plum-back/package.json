@@ -1,16 +1,21 @@
 {
   "name": "plum-back",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "sync": "rsync ../c/*.res ./c",
     "start": "node ./bin/www",
     "start:debug": "node --inspect-brk ./bin/www",
-    "build": "bsb -make-world 2>&1",
-    "clean": "bsb -clean-world"
+    "build": "rescript",
+    "clean": "rescript clean -with-deps",
+    "start": "rescript build -w"
   },
   "dependencies": {
     "lib-web": "*",
+    "res-express": "*",
+    "res-pg": "*",
+    "res-uuid": "*",
+    "res-crypto": "*",
+    "res-node": "*",
     "@glennsl/bs-json": "^5.0.2",
     "body-parser": "^1.19.0",
     "cookie-parser": "~1.4.4",
@@ -20,10 +25,9 @@
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "pg": "^8.5.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "bs-platform": "*"
+    "rescript": "*"
   }
 }

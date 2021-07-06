@@ -1,0 +1,21 @@
+rescript = 1
+g_finger := C:\pok\pinaple\apps\rest-api\node_modules\lib-web\lib\ocaml\install.stamp
+rule astj
+  command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsc.exe"  -w a -bs-v 9.1.4  -absname -bs-ast -o $out $i
+o src\Pg.ast : astj ..\..\src\Pg.res
+rule deps
+  command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsb_helper.exe" -hash 8a22c3cbca6e4a5a928123d94582c218 -bs-ns ResPg $in
+  restat = 1
+o src\Pg.d : deps src\Pg.ast
+rule mij
+  command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsc.exe" -bs-ns ResPg -I . -I src -I "C:\pok\pinaple\apps\rest-api\node_modules\lib-web\lib\ocaml"   -w a -bs-package-name res-pg -bs-package-output commonjs:$in_d:.bs.js -bs-v $g_finger $i
+  dyndep = 1
+  restat = 1
+o src\Pg-ResPg.cmj src\Pg-ResPg.cmi ..\..\src\Pg.bs.js : mij src\Pg.ast
+o src\Pool.ast : astj ..\..\src\Pool.res
+o src\Pool.d : deps src\Pool.ast
+o src\Pool-ResPg.cmj src\Pool-ResPg.cmi ..\..\src\Pool.bs.js : mij src\Pool.ast
+rule build_package
+  command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsc.exe" -w -49 -color always -no-alias-deps  $i
+  restat = 1
+o ResPg.cmi : build_package ResPg.mlmap

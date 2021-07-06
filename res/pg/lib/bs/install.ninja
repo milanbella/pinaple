@@ -1,0 +1,17 @@
+rescript = 1
+rule cp
+  command = cmd.exe /C copy /Y $i $out >NUL
+rule touch
+ command = cmd.exe /C type nul >>$out & copy $out+,, >NUL
+o Pg-ResPg.cmi : cp ..\bs\src\Pg-ResPg.cmi
+o Pg-ResPg.cmj : cp ..\bs\src\Pg-ResPg.cmj
+o Pg-ResPg.cmt : cp ..\bs\src\Pg-ResPg.cmt
+o Pg.res : cp ..\..\src\Pg.res
+o Pool-ResPg.cmi : cp ..\bs\src\Pool-ResPg.cmi
+o Pool-ResPg.cmj : cp ..\bs\src\Pool-ResPg.cmj
+o Pool-ResPg.cmt : cp ..\bs\src\Pool-ResPg.cmt
+o Pool.res : cp ..\..\src\Pool.res
+o ResPg.cmi : cp ..\bs\ResPg.cmi
+o ResPg.cmj : cp ..\bs\ResPg.cmj
+o ResPg.cmt : cp ..\bs\ResPg.cmt
+build install.stamp : touch Pg-ResPg.cmi Pg-ResPg.cmj Pool-ResPg.cmi Pool-ResPg.cmj ResPg.cmi ResPg.cmj

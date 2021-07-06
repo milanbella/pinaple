@@ -1,4 +1,4 @@
-let cFILE = "C_rest.res"
+let cFILE = "Rest.res"
 
 module User = {
   type t = {

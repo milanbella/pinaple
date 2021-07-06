@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/rescript-lang/rescript-compiler/master/docs/docson/build-schema.json",
+  "name": "rest-api",
+  "namespace": true,
+  "version": "0.0.1",
+  "sources": [{
+    "dir" : "src",
+    "subdirs" : true
+  },{
+    "dir" : "c",
+    "subdirs" : true
+  }],
+  "package-specs": {
+    "module": "commonjs",
+    "in-source": true
+  },
+  "suffix": ".bs.js",
+  "bs-dependencies": [
+    "lib-web",
+    "res-express",
+    "res-pg",
+    "res-uuid",
+    "res-crypto",
+    "res-node",
+    "@glennsl/bs-json"
+  ],
+  "warnings": {
+    "error" : "+101"
+  }
+}

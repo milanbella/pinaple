@@ -20,7 +20,7 @@
   "namespace": true,
   "bs-dependencies": [
     "lib-web",
-    "reason-react",
+    "@rescript/react",
     "bs-fetch",
     "@glennsl/bs-json"
   ],

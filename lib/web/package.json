@@ -1,16 +1,17 @@
 {
   "name": "lib-web",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "bsb -make-world -clean-world 2>&1",
-    "start": "bsb -make-world -clean-world -w"
+    "build": "rescript",
+    "clean": "rescript clean -with-deps",
+    "start": "rescript build -w"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "bs-platform": "*"
+    "rescript": "*"
   },
   "dependencies": {
     "@glennsl/bs-json": "^5.0.2"

@@ -1,11 +1,10 @@
 {
   "name": "plum-front",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "scripts": {
-    "sync": "rsync ../c/*.res ./c",
-    "build": "bsb -make-world 2>&1",
-    "start": "bsb -make-world -w -ws _ ",
-    "clean": "bsb -clean-world",
+    "build": "rescript",
+    "clean": "rescript clean -with-deps",
+    "start": "rescript build -w",
     "test": "echo \"Error: no test specified\" && exit 1",
     "css-build": "node-sass --omit-source-map-url -o ../plum-back/public sass/styles.scss",
     "css-watch": "css-build -- --watch",
@@ -26,10 +25,10 @@
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-hook-form": "^6.15.1",
-    "reason-react": ">=0.7.0"
+    "@rescript/react": "*"
   },
   "devDependencies": {
-    "bs-platform": "*",
+    "rescript": "*",
     "bulma": "^0.9.0",
     "node-sass": "^4.14.1",
     "webpack": "^4.44.1",

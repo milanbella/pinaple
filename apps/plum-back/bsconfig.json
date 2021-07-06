@@ -17,6 +17,11 @@
   "suffix": ".bs.js",
   "bs-dependencies": [
     "lib-web",
+    "res-express",
+    "res-pg",
+    "res-uuid",
+    "res-crypto",
+    "res-node",
     "@glennsl/bs-json"
   ],
   "warnings": {

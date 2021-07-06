@@ -1,3 +1,10 @@
+let errToStr = (err: Js.Exn.t): string => {
+  switch Js.Exn.message(err) {
+  | Some(m) => m
+  | None => ""
+  }
+} 
+
 let debug = (fileName, funcName, message) => {
   Js.Console.log(`DEBUG: ${fileName}:${funcName}: ${message}`) 
 }
@@ -37,3 +44,4 @@ let errorA = (fileName, funcName, message, attrs: Js.Dict.t<string>) => {
 let errorEA = (fileName, funcName, message, err, attrs) => {
   Js.Console.error3(`ERROR: ${fileName}:${funcName}: ${message}`, err, attrs); 
 }
+

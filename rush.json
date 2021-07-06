@@ -458,6 +458,26 @@
     //   "reviewCategory": "tools"
     // }
     {
+      "packageName": "res-express",
+      "projectFolder": "res/express"
+    },
+    {
+      "packageName": "res-pg",
+      "projectFolder": "res/pg"
+    },
+    {
+      "packageName": "res-uuid",
+      "projectFolder": "res/uuid"
+    },
+    {
+      "packageName": "res-crypto",
+      "projectFolder": "res/crypto"
+    },
+    {
+      "packageName": "res-node",
+      "projectFolder": "res/node"
+    },
+    {
       "packageName": "lib-web",
       "projectFolder": "lib/web"
     },
@@ -468,6 +488,10 @@
     {
       "packageName": "plum-back",
       "projectFolder": "apps/plum-back"
+    },
+    {
+      "packageName": "rest-api",
+      "projectFolder": "apps/rest-api"
     }
   ]
 }

@@ -1,5 +1,5 @@
 type t 
-type handler = (C_request.t, C_response.t) => Js.Promise.t<unit>
+type handler = (Request.t, Response.t) => Js.Promise.t<unit>
 
 @bs.module("express") external router: () => t = "Router" 
 
