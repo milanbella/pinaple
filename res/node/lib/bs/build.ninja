@@ -1,13 +1,13 @@
 rescript = 1
 rule astj
-  command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsc.exe"  -w a -bs-v 9.1.4  -absname -bs-ast -o $out $i
+  command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsc.exe"  -bs-v 9.1.4  -absname -bs-ast -o $out $i
 o src\Node.ast : astj ..\..\src\Node.res
 rule deps
   command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsb_helper.exe" -hash 6ad9a92badf170e3268ff5add81a774a -bs-ns ResNode $in
   restat = 1
 o src\Node.d : deps src\Node.ast
 rule mij
-  command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsc.exe" -bs-ns ResNode -I . -I src   -w a -bs-package-name res-node -bs-package-output commonjs:$in_d:.bs.js $i
+  command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsc.exe" -bs-ns ResNode -I . -I src   -bs-package-name res-node -bs-package-output commonjs:$in_d:.bs.js $i
   dyndep = 1
   restat = 1
 o src\Node-ResNode.cmj src\Node-ResNode.cmi ..\..\src\Node.bs.js : mij src\Node.ast

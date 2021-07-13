@@ -4,7 +4,7 @@ let apiCreateUser = (payload: Js.Json.t): Js.Promise.t<T.tReply<unit>> => {
   let cFUN = "apiCreateUser()";
 
   let createNewUser = (user: LibWeb.Rest.User.t): Js.Promise.t<T.tReply<unit>>  => {
-    ResPg.Pool.query1("insert into users(id, user_name, user_email, password) values($1, $2, $3, $4)", [ResPg.Pg.Query.string(ResUuid.Uuid.id()), ResPg.Pg.Query.string(user.userName), ResPg.Pg.Query.string(user.userEmail), ResPg.Pg.Query.string(ResCrypto.Crypto.sha256(user.password))])  
+    ResPg.Pool.query("insert into users(id, user_name, user_email, password) values($1, $2, $3, $4)", [ResPg.Pg.Query.string(ResUuid.Uuid.id()), ResPg.Pg.Query.string(user.userName), ResPg.Pg.Query.string(user.userEmail), ResPg.Pg.Query.string(ResCrypto.Crypto.sha256(user.password))])  
     -> Js.Promise.then_((_) => {
       Js.Promise.resolve(Belt.Result.Ok(()))
     },_) 

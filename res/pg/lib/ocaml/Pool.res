@@ -10,6 +10,7 @@ Pg.Pool.on(pool, "error", (err) => {
   LibWeb.Logger.errorE(cFILE, cFUN, "on error", err)
 })
 
+/*
 let query = (queryStr: string, params: array<Pg.Query.param>): Js.Promise.t<Pg.Query.result<'a>> => {
   let cFUNC = "query()"
   Js.Promise.make((~resolve, ~reject) => {
@@ -23,6 +24,7 @@ let query = (queryStr: string, params: array<Pg.Query.param>): Js.Promise.t<Pg.Q
     })
   })
 } 
+*/
 
 let client = (): Js.Promise.t<(Pg.Client.t, Pg.Pool.done)> => {
   let cFUNC = "client()"
@@ -30,8 +32,7 @@ let client = (): Js.Promise.t<(Pg.Client.t, Pg.Pool.done)> => {
     Pg.Pool.connect(pool, (err, client, done) => {
       switch err {
       | Some(e) =>
-        let es = LibWeb.Logger.errToStr(e)
-        LibWeb.Logger.errorE(cFILE, cFUNC, `error, Pg.Pool.connect() failed: ${es}`, e)
+        LibWeb.Logger.errorE(cFILE, cFUNC, `error, Pg.Pool.connect() failed`, e)
         done()
         reject(. PoolConnectError)
       | None => 
@@ -41,22 +42,20 @@ let client = (): Js.Promise.t<(Pg.Client.t, Pg.Pool.done)> => {
   })
 } 
 
-let query1 = (queryStr: string, params: array<Pg.Query.param>): Js.Promise.t<Pg.Query.result<'a>> => {
+let query = (queryStr: string, params: array<Pg.Query.param>): Js.Promise.t<Pg.Query.result<'a>> => {
   let cFUNC = "query()"
   Js.Promise.make((~resolve, ~reject) => {
     Pg.Pool.connect(pool, (err, client, done) => {
       switch err {
       | Some(e) =>
-        let es = LibWeb.Logger.errToStr(e)
-        LibWeb.Logger.errorE(cFILE, cFUNC, `error, Pg.Pool.connect() failed: ${es}, failed query: ${queryStr}`, e)
+        LibWeb.Logger.errorE(cFILE, cFUNC, `error, Pg.Pool.connect() failed, failed query: ${queryStr}`, e)
         done()
         reject(. PoolConnectError)
       | None => 
         Pg.Client.query(client, queryStr, params, (err, result) => {
           switch err {
           | Some(e) => 
-            let es = LibWeb.Logger.errToStr(e)
-            LibWeb.Logger.errorE(cFILE, cFUNC, `error, Pg.Client.query() failed ${es}, failed query: ${queryStr}`, e)
+            LibWeb.Logger.errorE(cFILE, cFUNC, `error, Pg.Client.query() failed, failed query: ${queryStr}`, e)
             done()
             reject(. QueryError)
           | None => 

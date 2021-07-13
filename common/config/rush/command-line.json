@@ -11,6 +11,13 @@
    * "rush my-global-command --help".
    */
   "commands": [
+    {
+      "commandKind": "bulk",
+      "name": "clean",
+      "summary": "clean intermediate build files",
+      "description": "clean intermediate build files",
+      "enableParallelism": false
+    }
     // {
     //   /**
     //    * (Required) Determines the type of custom command.

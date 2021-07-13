@@ -1,10 +1,3 @@
-let errToStr = (err: Js.Exn.t): string => {
-  switch Js.Exn.message(err) {
-  | Some(m) => m
-  | None => ""
-  }
-} 
-
 let debug = (fileName, funcName, message) => {
   Js.Console.log(`DEBUG: ${fileName}:${funcName}: ${message}`) 
 }

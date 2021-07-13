@@ -1,14 +1,15 @@
 rescript = 1
-g_finger := C:\pok\pinaple\apps\rest-api\node_modules\lib-web\lib\ocaml\install.stamp
+g_finger := C:\pok\pinaple\res\pg\node_modules\lib-web\lib\ocaml\install.stamp
+g_finger := C:\pok\pinaple\res\pg\node_modules\@ryyppy\rescript-promise\lib\ocaml\install.stamp
 rule astj
-  command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsc.exe"  -w a -bs-v 9.1.4  -absname -bs-ast -o $out $i
+  command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsc.exe"  -bs-v 9.1.4  -absname -bs-ast -o $out $i
 o src\Pg.ast : astj ..\..\src\Pg.res
 rule deps
   command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsb_helper.exe" -hash 8a22c3cbca6e4a5a928123d94582c218 -bs-ns ResPg $in
   restat = 1
 o src\Pg.d : deps src\Pg.ast
 rule mij
-  command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsc.exe" -bs-ns ResPg -I . -I src -I "C:\pok\pinaple\apps\rest-api\node_modules\lib-web\lib\ocaml"   -w a -bs-package-name res-pg -bs-package-output commonjs:$in_d:.bs.js -bs-v $g_finger $i
+  command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsc.exe" -bs-ns ResPg -I . -I src -I "C:\pok\pinaple\res\pg\node_modules\lib-web\lib\ocaml" -I "C:\pok\pinaple\res\pg\node_modules\@ryyppy\rescript-promise\lib\ocaml"   -bs-package-name res-pg -bs-package-output commonjs:$in_d:.bs.js -bs-v $g_finger $i
   dyndep = 1
   restat = 1
 o src\Pg-ResPg.cmj src\Pg-ResPg.cmi ..\..\src\Pg.bs.js : mij src\Pg.ast

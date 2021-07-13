@@ -2,7 +2,6 @@
 'use strict';
 
 var Caml_array = require("rescript/lib/js/caml_array.js");
-var Caml_option = require("rescript/lib/js/caml_option.js");
 
 var Query = {};
 
@@ -15,10 +14,10 @@ function testClient(client) {
         "brianc",
         "brian.m.carlson@gmail.com"
       ], (function (err, res) {
-          if (err !== undefined) {
-            console.log(Caml_option.valFromOption(err).stack);
-          } else {
+          if (err == null) {
             console.log(Caml_array.get(res.rows, 0).name);
+          } else {
+            console.log(err.stack);
           }
           
         }));

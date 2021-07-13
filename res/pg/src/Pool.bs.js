@@ -4,7 +4,6 @@
 var Pg = require("pg");
 var Curry = require("rescript/lib/js/curry.js");
 var Pg$ResPg = require("./Pg.bs.js");
-var Caml_option = require("rescript/lib/js/caml_option.js");
 var Logger$LibWeb = require("lib-web/src/Logger.bs.js");
 var Caml_exceptions = require("rescript/lib/js/caml_exceptions.js");
 
@@ -20,70 +19,60 @@ pool.on("error", (function (err) {
         return Logger$LibWeb.errorE(cFILE, "Pg.Pool.on()", "on error", err);
       }));
 
-function query(queryStr, params) {
-  return new Promise((function (resolve, reject) {
-                pool.query(queryStr, params, (function (err, result) {
-                        if (err !== undefined) {
-                          Logger$LibWeb.errorE(cFILE, "query()", "error, query: " + queryStr, Caml_option.valFromOption(err));
-                          return reject({
-                                      RE_EXN_ID: QueryError
-                                    });
-                        } else {
-                          return resolve(result);
-                        }
-                      }));
-                
-              }));
-}
-
 function client(param) {
-  return new Promise((function (resolve, reject) {
+  return new Promise((function (resolve, _reject) {
                 pool.connect(function (err, client, done) {
-                      if (err === undefined) {
-                        return resolve([
-                                    client,
-                                    done
-                                  ]);
+                      if (err == null) {
+                        return resolve({
+                                    TAG: /* Ok */0,
+                                    _0: [
+                                      client,
+                                      done
+                                    ]
+                                  });
+                      } else {
+                        Logger$LibWeb.errorE(cFILE, "client()", "error, Pg.Pool.connect() failed", err);
+                        Curry._1(done, undefined);
+                        return resolve({
+                                    TAG: /* Error */1,
+                                    _0: err
+                                  });
                       }
-                      var e = Caml_option.valFromOption(err);
-                      var es = Logger$LibWeb.errToStr(e);
-                      Logger$LibWeb.errorE(cFILE, "client()", "error, Pg.Pool.connect() failed: " + es, e);
-                      Curry._1(done, undefined);
-                      return reject({
-                                  RE_EXN_ID: PoolConnectError
-                                });
                     });
                 
               }));
 }
 
-function query1(queryStr, params) {
+function query(queryStr, params) {
   var cFUNC = "query()";
-  return new Promise((function (resolve, reject) {
+  return new Promise((function (resolve, _reject) {
                 pool.connect(function (err, client, done) {
-                      if (err !== undefined) {
-                        var e = Caml_option.valFromOption(err);
-                        var es = Logger$LibWeb.errToStr(e);
-                        Logger$LibWeb.errorE(cFILE, cFUNC, "error, Pg.Pool.connect() failed: " + es + ", failed query: " + queryStr, e);
+                      if (err == null) {
+                        client.query(queryStr, params, (function (err, result) {
+                                if (err == null) {
+                                  Curry._1(done, undefined);
+                                  return resolve({
+                                              TAG: /* Ok */0,
+                                              _0: result
+                                            });
+                                } else {
+                                  Logger$LibWeb.errorE(cFILE, cFUNC, "error, Pg.Client.query() failed, failed query: " + queryStr, err);
+                                  Curry._1(done, undefined);
+                                  return resolve({
+                                              TAG: /* Error */1,
+                                              _0: err
+                                            });
+                                }
+                              }));
+                        return ;
+                      } else {
+                        Logger$LibWeb.errorE(cFILE, cFUNC, "error, Pg.Pool.connect() failed, failed query: " + queryStr, err);
                         Curry._1(done, undefined);
-                        return reject({
-                                    RE_EXN_ID: PoolConnectError
+                        return resolve({
+                                    TAG: /* Error */1,
+                                    _0: err
                                   });
                       }
-                      client.query(queryStr, params, (function (err, result) {
-                              if (err !== undefined) {
-                                var e = Caml_option.valFromOption(err);
-                                var es = Logger$LibWeb.errToStr(e);
-                                Logger$LibWeb.errorE(cFILE, cFUNC, "error, Pg.Client.query() failed " + es + ", failed query: " + queryStr, e);
-                                Curry._1(done, undefined);
-                                return reject({
-                                            RE_EXN_ID: QueryError
-                                          });
-                              }
-                              Curry._1(done, undefined);
-                              return resolve(result);
-                            }));
-                      
                     });
                 
               }));
@@ -98,8 +87,7 @@ exports.cFILE = cFILE;
 exports.PoolConnectError = PoolConnectError;
 exports.QueryError = QueryError;
 exports.pool = pool;
-exports.query = query;
 exports.client = client;
-exports.query1 = query1;
+exports.query = query;
 exports.connect = connect;
 /* pool Not a pure module */

@@ -26,6 +26,23 @@ afterAll(async () => {
 });
 */
 
+/*
+async function testit() {
+  try {
+    let res = await apiCreateUser({
+      userName: `${USER_NAME}`,
+      userEmail: `${USER_EMAIL}`,
+      password: 'milan12'
+    });
+    console.dir(res);
+  } catch(err) {
+    console.error('error', err);
+  }
+}
+
+testit();
+*/
+
 describe('create user', () =>  {
   it('creates new user', async () => {
     let res = await apiCreateUser({
