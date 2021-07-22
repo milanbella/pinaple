@@ -4,7 +4,6 @@ const { apiCreateUser } = require('./UserTest.bs');
 const USER_NAME = 'milan';
 const USER_EMAIL = 'milan@hotmail.com';
 
-/*
 const pool = new Pool({
   host: 'localhost',
   database: 'auth',
@@ -14,7 +13,9 @@ const pool = new Pool({
 });
 
 async function removeUsers() {
-  await pool.query('delete from users where user_name = $1', [USER_NAME]); 
+  let client = await pool.connect();
+  await client.query('delete from users where user_name = $1', [USER_NAME]); 
+  client.release();
 }
 
 beforeAll(async () => {
@@ -23,25 +24,8 @@ beforeAll(async () => {
 
 afterAll(async () => {
   await removeUsers();
+  pool.end();
 });
-*/
-
-/*
-async function testit() {
-  try {
-    let res = await apiCreateUser({
-      userName: `${USER_NAME}`,
-      userEmail: `${USER_EMAIL}`,
-      password: 'milan12'
-    });
-    console.dir(res);
-  } catch(err) {
-    console.error('error', err);
-  }
-}
-
-testit();
-*/
 
 describe('create user', () =>  {
   it('creates new user', async () => {

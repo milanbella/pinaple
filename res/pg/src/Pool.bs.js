@@ -50,6 +50,7 @@ function query(queryStr, params) {
                       if (err == null) {
                         client.query(queryStr, params, (function (err, result) {
                                 if (err == null) {
+                                  client.end();
                                   Curry._1(done, undefined);
                                   return resolve({
                                               TAG: /* Ok */0,
@@ -57,6 +58,7 @@ function query(queryStr, params) {
                                             });
                                 } else {
                                   Logger$LibWeb.errorE(cFILE, cFUNC, "error, Pg.Client.query() failed, failed query: " + queryStr, err);
+                                  client.end();
                                   Curry._1(done, undefined);
                                   return resolve({
                                               TAG: /* Error */1,
@@ -67,6 +69,7 @@ function query(queryStr, params) {
                         return ;
                       } else {
                         Logger$LibWeb.errorE(cFILE, cFUNC, "error, Pg.Pool.connect() failed, failed query: " + queryStr, err);
+                        client.end();
                         Curry._1(done, undefined);
                         return resolve({
                                     TAG: /* Error */1,

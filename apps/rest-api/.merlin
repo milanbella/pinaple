@@ -19,6 +19,8 @@ S C:\pok\pinaple\apps\rest-api\node_modules\res-node\lib\ocaml
 B C:\pok\pinaple\apps\rest-api\node_modules\res-node\lib\ocaml
 S C:\pok\pinaple\apps\rest-api\node_modules\@glennsl\bs-json\lib\ocaml
 B C:\pok\pinaple\apps\rest-api\node_modules\@glennsl\bs-json\lib\ocaml
+S C:\pok\pinaple\apps\rest-api\node_modules\@ryyppy\rescript-promise\lib\ocaml
+B C:\pok\pinaple\apps\rest-api\node_modules\@ryyppy\rescript-promise\lib\ocaml
 S c
 B lib\bs\c
 S src

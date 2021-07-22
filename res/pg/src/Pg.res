@@ -12,6 +12,7 @@ module Query = {
 module Client = {
   type t
   @bs.send external query: (t, string, array<Query.param>, (Js.Nullable.t<Js.Exn.t>, Query.result<'a>) => unit) => unit = "query" 
+  @bs.send external end: (t) => unit = "end" 
 }
 
 module User = {

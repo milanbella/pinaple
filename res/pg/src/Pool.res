@@ -1,5 +1,4 @@
 let cFILE = "Pool.res"
-open Belt
 
 exception PoolConnectError
 exception QueryError
@@ -27,7 +26,7 @@ let query = (queryStr: string, params: array<Pg.Query.param>): Js.Promise.t<Pg.Q
 } 
 */
 
-let client = (): Promise.t<Result.t<(Pg.Client.t, Pg.Pool.done), Js.Exn.t>> => {
+let client = (): Promise.t<Belt.Result.t<(Pg.Client.t, Pg.Pool.done), Js.Exn.t>> => {
   let cFUNC = "client()"
   Promise.make((resolve, _reject) => {
     Pg.Pool.connect(pool, (err, client, done) => {
@@ -42,13 +41,14 @@ let client = (): Promise.t<Result.t<(Pg.Client.t, Pg.Pool.done), Js.Exn.t>> => {
   })
 } 
 
-let query = (queryStr: string, params: array<Pg.Query.param>): Promise.t<Result.t<Pg.Query.result<'a>, Js.Exn.t>> => {
+let query = (queryStr: string, params: array<Pg.Query.param>): Promise.t<Belt.Result.t<Pg.Query.result<'a>, Js.Exn.t>> => {
   let cFUNC = "query()"
   Promise.make((resolve, _reject) => {
     Pg.Pool.connect(pool, (err, client, done) => {
       switch Js.Nullable.toOption(err) {
       | Some(err) =>
         LibWeb.Logger.errorE(cFILE, cFUNC, `error, Pg.Pool.connect() failed, failed query: ${queryStr}`, err)
+        Pg.Client.end(client)
         done()
         resolve(. Error(err))
       | None =>
@@ -56,9 +56,11 @@ let query = (queryStr: string, params: array<Pg.Query.param>): Promise.t<Result.
           switch Js.Nullable.toOption(err) {
           | Some(err) =>
             LibWeb.Logger.errorE(cFILE, cFUNC, `error, Pg.Client.query() failed, failed query: ${queryStr}`, err)
+            Pg.Client.end(client)
             done()
             resolve(. Error(err))
           | None =>
+            Pg.Client.end(client)
             done()
             resolve(. Ok(result)) 
           }

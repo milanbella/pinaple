@@ -26,41 +26,45 @@ let query = (queryStr: string, params: array<Pg.Query.param>): Js.Promise.t<Pg.Q
 } 
 */
 
-let client = (): Js.Promise.t<(Pg.Client.t, Pg.Pool.done)> => {
+let client = (): Promise.t<Belt.Result.t<(Pg.Client.t, Pg.Pool.done), Js.Exn.t>> => {
   let cFUNC = "client()"
-  Js.Promise.make((~resolve, ~reject) => {
+  Promise.make((resolve, _reject) => {
     Pg.Pool.connect(pool, (err, client, done) => {
-      switch err {
-      | Some(e) =>
-        LibWeb.Logger.errorE(cFILE, cFUNC, `error, Pg.Pool.connect() failed`, e)
+      switch Js.Nullable.toOption(err) {
+      | None => resolve(. Ok((client, done)))
+      | Some(err) =>
+        LibWeb.Logger.errorE(cFILE, cFUNC, `error, Pg.Pool.connect() failed`, err)
         done()
-        reject(. PoolConnectError)
-      | None => 
-        resolve(. (client, done))
+        resolve(. Error(err))
       }
     })
   })
 } 
 
-let query = (queryStr: string, params: array<Pg.Query.param>): Js.Promise.t<Pg.Query.result<'a>> => {
+let query = (queryStr: string, params: array<Pg.Query.param>): Promise.t<Belt.Result.t<Pg.Query.result<'a>, Js.Exn.t>> => {
   let cFUNC = "query()"
-  Js.Promise.make((~resolve, ~reject) => {
+  Promise.make((resolve, _reject) => {
     Pg.Pool.connect(pool, (err, client, done) => {
-      switch err {
-      | Some(e) =>
-        LibWeb.Logger.errorE(cFILE, cFUNC, `error, Pg.Pool.connect() failed, failed query: ${queryStr}`, e)
+      Js.Console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ cp 10");
+      switch Js.Nullable.toOption(err) {
+      | Some(err) =>
+        LibWeb.Logger.errorE(cFILE, cFUNC, `error, Pg.Pool.connect() failed, failed query: ${queryStr}`, err)
+        Pg.Client.end(client)
         done()
-        reject(. PoolConnectError)
-      | None => 
+        resolve(. Error(err))
+      | None =>
         Pg.Client.query(client, queryStr, params, (err, result) => {
-          switch err {
-          | Some(e) => 
-            LibWeb.Logger.errorE(cFILE, cFUNC, `error, Pg.Client.query() failed, failed query: ${queryStr}`, e)
+          switch Js.Nullable.toOption(err) {
+          | Some(err) =>
+            LibWeb.Logger.errorE(cFILE, cFUNC, `error, Pg.Client.query() failed, failed query: ${queryStr}`, err)
+            Pg.Client.end(client)
             done()
-            reject(. QueryError)
-          | None => 
+            resolve(. Error(err))
+          | None =>
+            Js.Console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ cp 100: done()");
+            Pg.Client.end(client)
             done()
-            resolve(. result) 
+            resolve(. Ok(result)) 
           }
         })
       }
@@ -69,7 +73,7 @@ let query = (queryStr: string, params: array<Pg.Query.param>): Js.Promise.t<Pg.Q
 } 
 
 
-let connect = (cb: (option<Js.Exn.t>, Pg.Client.t, Pg.Pool.done) => unit): unit =>  {
+let connect = (cb: (Js.Nullable.t<Js.Exn.t>, Pg.Client.t, Pg.Pool.done) => unit): unit =>  {
   Pg.Pool.connect(pool, cb)
 }
 

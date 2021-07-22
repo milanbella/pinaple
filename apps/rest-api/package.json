@@ -6,7 +6,7 @@
     "build": "rescript",
     "clean": "rescript clean -with-deps",
     "start": "rescript build -w",
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "dependencies": {
     "lib-web": "*",
@@ -24,7 +24,8 @@
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "@ryyppy/rescript-promise": "^2.1.0"
   },
   "devDependencies": {
     "rescript": "*",

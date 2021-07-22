@@ -11,7 +11,8 @@ module Query = {
 
 module Client = {
   type t
-  @bs.send external query: (t, string, array<Query.param>, (option<Js.Exn.t>, Query.result<'a>) => unit) => unit = "query" 
+  @bs.send external query: (t, string, array<Query.param>, (Js.Nullable.t<Js.Exn.t>, Query.result<'a>) => unit) => unit = "query" 
+  @bs.send external end: (t) => unit = "query" 
 }
 
 module User = {
@@ -24,9 +25,9 @@ module User = {
 let testClient = (client) => {
   Client.query(client, "INSERT INTO users(name, email) VALUES($1, $2) RETURNING *", [Query.string("brianc"), Query.string("brian.m.carlson@gmail.com")], 
   (err, res: Query.result<User.t>) => {
-    switch err {
-    | Some(e) => Js.log(Js.Exn.stack(e))
+    switch Js.Nullable.toOption(err) {
     | None => Js.log(res.rows[0].name) 
+    | Some(err) =>  Js.log(Js.Exn.stack(err))
     }
   })  
 }
@@ -49,8 +50,8 @@ module Pool = {
 
   @bs.new @bs.module("pg") external new: (~options: connectionOptions = ?, ()) => t = "Pool"
   @bs.send external on: (t, string, (Js.Exn.t) => unit) => unit = "on"
-  @bs.send external connect: (t, (option<Js.Exn.t>, Client.t, done) => unit) => unit = "connect"
+  @bs.send external connect: (t, (Js.Nullable.t<Js.Exn.t>, Client.t, done) => unit) => unit = "connect"
 
-  @bs.send external query: (t, string, array<Query.param>, (option<Js.Exn.t>, Query.result<'a>) => unit) => unit = "query" 
+  @bs.send external query: (t, string, array<Query.param>, (Js.Nullable.t<Js.Exn.t>, Query.result<'a>) => unit) => unit = "query" 
 }
 

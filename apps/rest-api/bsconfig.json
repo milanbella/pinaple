@@ -22,7 +22,8 @@
     "res-uuid",
     "res-crypto",
     "res-node",
-    "@glennsl/bs-json"
+    "@glennsl/bs-json",
+    "@ryyppy/rescript-promise"
   ],
   "warnings": {
     "error" : "+101"
