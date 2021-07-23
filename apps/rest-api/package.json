@@ -10,11 +10,10 @@
   },
   "dependencies": {
     "lib-web": "*",
-    "res-express": "*",
     "res-pg": "*",
     "res-uuid": "*",
     "res-crypto": "*",
-    "res-node": "*",
+    "res-koa": "*",
     "@glennsl/bs-json": "^5.0.2",
     "@ryyppy/rescript-promise": "^2.1.0"
   },

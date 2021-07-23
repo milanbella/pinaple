@@ -6,6 +6,7 @@ dependencies:
   '@rush-temp/plum-front': file:projects/plum-front.tgz
   '@rush-temp/res-crypto': file:projects/res-crypto.tgz
   '@rush-temp/res-express': file:projects/res-express.tgz
+  '@rush-temp/res-koa': file:projects/res-koa.tgz
   '@rush-temp/res-node': file:projects/res-node.tgz
   '@rush-temp/res-pg': file:projects/res-pg.tgz
   '@rush-temp/res-uuid': file:projects/res-uuid.tgz
@@ -6779,6 +6780,15 @@ packages:
       integrity: sha512-DaSu4717HJKF47RvaCDk0rKRm8bhCIeJwD07U5CaAUuHbapXmrE1/UTcmcLp/FYfeMMkMTzs8rRkvAJsIb63Ag==
       tarball: file:projects/res-express.tgz
     version: 0.0.0
+  file:projects/res-koa.tgz:
+    dependencies:
+      rescript: 9.1.4
+    dev: false
+    name: '@rush-temp/res-koa'
+    resolution:
+      integrity: sha512-mo6AAp3SMMg1ekCq2zBq9ciJj2YGZ8BTqFXbsUPLg6qc83nSF1oXDuCDz4RzG1xqKCRZ/Hcu0xxvyRgAubnMQw==
+      tarball: file:projects/res-koa.tgz
+    version: 0.0.0
   file:projects/res-node.tgz:
     dependencies:
       rescript: 9.1.4
@@ -6811,6 +6821,7 @@ packages:
   file:projects/rest-api.tgz:
     dependencies:
       '@glennsl/bs-json': 5.0.2
+      '@ryyppy/rescript-promise': 2.1.0
       body-parser: 1.19.0
       cookie-parser: 1.4.5
       crypto-js: 4.0.0
@@ -6826,7 +6837,7 @@ packages:
     dev: false
     name: '@rush-temp/rest-api'
     resolution:
-      integrity: sha512-MNIb3gdGrQfGlMaaGd8Pdogp2Mxf+7bDeLuWKt0Lam7Z+ffNCeCVG6wABnhdBw8XQmNUdh740XppxHdiJjkUwg==
+      integrity: sha512-9o/08HtS6nHm2muyKH0x/QHeJtOUQAuMkWlIxO9lUDuqMiYwLKHUr9Pp2//umzLKqfrVIBo9eFBQGpNXCT4MwA==
       tarball: file:projects/rest-api.tgz
     version: 0.0.0
 registry: ''
@@ -6838,6 +6849,7 @@ specifiers:
   '@rush-temp/plum-front': file:./projects/plum-front.tgz
   '@rush-temp/res-crypto': file:./projects/res-crypto.tgz
   '@rush-temp/res-express': file:./projects/res-express.tgz
+  '@rush-temp/res-koa': file:./projects/res-koa.tgz
   '@rush-temp/res-node': file:./projects/res-node.tgz
   '@rush-temp/res-pg': file:./projects/res-pg.tgz
   '@rush-temp/res-uuid': file:./projects/res-uuid.tgz

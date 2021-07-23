@@ -462,6 +462,10 @@
       "projectFolder": "res/express"
     },
     {
+      "packageName": "res-koa",
+      "projectFolder": "res/koa"
+    },
+    {
       "packageName": "res-pg",
       "projectFolder": "res/pg"
     },
