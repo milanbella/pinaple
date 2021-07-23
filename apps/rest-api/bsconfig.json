@@ -6,9 +6,6 @@
   "sources": [{
     "dir" : "src",
     "subdirs" : true
-  },{
-    "dir" : "c",
-    "subdirs" : true
   }],
   "package-specs": {
     "module": "commonjs",
