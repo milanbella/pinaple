@@ -269,3 +269,68 @@ let makeTranslation = (fetchModuleFn: tFetchModule) => {
 
   translateKey
 }
+
+module Browser = {
+  let modulesRootPath = "locales"
+
+  let fetchModule = (lang, moduleName) => {
+
+    Fetch.fetch("/" ++ (modulesRootPath ++ ("/" ++ (lang ++ "/" ++ (moduleName ++ ".json")))))
+    |> Js.Promise.then_(Fetch.Response.text)
+  }
+
+  let translateKey = makeTranslation(fetchModule)
+
+  let useTranslate = () => {
+    let cFUN = "useTranslate()";
+
+    (~key, ~bindings=?, ()) => {
+      let (translatedKeyValue, setStatetranslatedKeyValue) = React.useState(() => "");
+      ignore( 
+        switch(bindings) {
+        | Some(b) => translateKey(~key, ~bindings=b, ())
+        | None => translateKey(~key, ()) 
+        } |> Js.Promise.then_((translatedKeyValue) => {
+              setStatetranslatedKeyValue(_ => translatedKeyValue);
+              Js.Promise.resolve(());
+            })
+          |> Js.Promise.catch((exn) => {
+              LibWeb.Logger.errorE(cFILE, cFUN, `failed to translate key '${key}'`, exn);
+              Js.Promise.resolve(());
+            })
+      )
+      React.string(translatedKeyValue)
+    }
+
+  }
+
+}
+
+module Nodejs = {
+  let modulesRootPath = "locales"
+
+  let fetchModule = (lang: string, moduleName: string): Js.Promise.t<string> => {
+    let cFUNC = "fetchModule()"
+
+    let path = `${modulesRootPath}/${lang}/${moduleName}.json`
+    try {
+      let txt = ResNode.Node.Fs.readFileSync(path, "utf8")
+      Js.Promise.resolve(txt)
+    } catch {
+    | Js.Exn.Error(obj) =>
+      switch Js.Exn.message(obj) {
+      | Some(m) => 
+        LibWeb.Logger.errorE(cFILE, cFUNC, `error while reading form file: ${m}`, obj)
+        Js.Promise.reject(Exception.BAD_FILE)
+      | None =>
+        LibWeb.Logger.error(cFILE, cFUNC, "error while reading form file")
+        Js.Promise.reject(Exception.BAD_FILE)
+      }
+    | _ =>
+      LibWeb.Logger.error(cFILE, cFUNC, "error while reading form file")
+      Js.Promise.reject(Exception.BAD_FILE)
+    }
+  }
+
+  let translateKey = makeTranslation(fetchModule)
+}

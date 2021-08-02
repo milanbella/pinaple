@@ -1,0 +1,24 @@
+####{BSB GENERATED: NO EDIT
+FLG -ppx "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsc.exe -as-ppx -bs-jsx 3"
+S C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\lib\ocaml
+B C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\lib\ocaml
+FLG -w +a-4-9-20-40-41-42-50-61-102-3-40-42-61
+S C:\pok\pinaple\apps\portal\node_modules\lib-web\lib\ocaml
+B C:\pok\pinaple\apps\portal\node_modules\lib-web\lib\ocaml
+S C:\pok\pinaple\apps\portal\node_modules\@rescript\react\lib\ocaml
+B C:\pok\pinaple\apps\portal\node_modules\@rescript\react\lib\ocaml
+S C:\pok\pinaple\apps\portal\node_modules\@glennsl\bs-json\lib\ocaml
+B C:\pok\pinaple\apps\portal\node_modules\@glennsl\bs-json\lib\ocaml
+S C:\pok\pinaple\apps\portal\node_modules\res-hookForm\lib\ocaml
+B C:\pok\pinaple\apps\portal\node_modules\res-hookForm\lib\ocaml
+S C:\pok\pinaple\apps\portal\node_modules\res-i18next\lib\ocaml
+B C:\pok\pinaple\apps\portal\node_modules\res-i18next\lib\ocaml
+S src
+B lib\bs\src
+S src\layouts
+B lib\bs\src\layouts
+S src\components
+B lib\bs\src\components
+S src\bindings
+B lib\bs\src\bindings
+####BSB GENERATED: NO EDIT}

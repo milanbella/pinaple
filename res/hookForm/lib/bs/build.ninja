@@ -1,0 +1,18 @@
+rescript = 1
+g_finger := C:\pok\pinaple\apps\portal\node_modules\@rescript\react\lib\ocaml\install.stamp
+rule astj
+  command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsc.exe"  -w a -bs-v 9.1.4  -absname -bs-ast -o $out $i
+o src\hookForm.ast : astj ..\..\src\hookForm.res
+rule deps
+  command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsb_helper.exe" -hash 631d22c72d5cf9d2aeabf022b1eeeaa3 -bs-ns ResHookForm $in
+  restat = 1
+o src\hookForm.d : deps src\hookForm.ast
+rule mij
+  command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsc.exe" -bs-ns ResHookForm -I . -I src -I "C:\pok\pinaple\apps\portal\node_modules\@rescript\react\lib\ocaml"   -w a -bs-package-name res-hookForm -bs-package-output commonjs:$in_d:.bs.js -bs-v $g_finger $i
+  dyndep = 1
+  restat = 1
+o src\hookForm-ResHookForm.cmj src\hookForm-ResHookForm.cmi ..\..\src\hookForm.bs.js : mij src\hookForm.ast
+rule build_package
+  command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsc.exe" -w -49 -color always -no-alias-deps  $i
+  restat = 1
+o ResHookForm.cmi : build_package ResHookForm.mlmap

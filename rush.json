@@ -482,12 +482,24 @@
       "projectFolder": "res/node"
     },
     {
+      "packageName": "res-hookForm",
+      "projectFolder": "res/hookForm"
+    },
+    {
+      "packageName": "res-i18next",
+      "projectFolder": "res/i18next"
+    },
+    {
       "packageName": "lib-web",
       "projectFolder": "lib/web"
     },
     {
       "packageName": "plum-front",
       "projectFolder": "apps/plum-front"
+    },
+    {
+      "packageName": "portal",
+      "projectFolder": "apps/portal"
     },
     {
       "packageName": "plum-back",

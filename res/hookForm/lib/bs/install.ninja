@@ -1,0 +1,13 @@
+rescript = 1
+rule cp
+  command = cmd.exe /C copy /Y $i $out >NUL
+rule touch
+ command = cmd.exe /C type nul >>$out & copy $out+,, >NUL
+o hookForm-ResHookForm.cmi : cp ..\bs\src\hookForm-ResHookForm.cmi
+o hookForm-ResHookForm.cmj : cp ..\bs\src\hookForm-ResHookForm.cmj
+o hookForm-ResHookForm.cmt : cp ..\bs\src\hookForm-ResHookForm.cmt
+o hookForm.res : cp ..\..\src\hookForm.res
+o ResHookForm.cmi : cp ..\bs\ResHookForm.cmi
+o ResHookForm.cmj : cp ..\bs\ResHookForm.cmj
+o ResHookForm.cmt : cp ..\bs\ResHookForm.cmt
+build install.stamp : touch hookForm-ResHookForm.cmi hookForm-ResHookForm.cmj ResHookForm.cmi ResHookForm.cmj

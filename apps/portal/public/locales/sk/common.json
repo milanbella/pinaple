@@ -1,0 +1,12 @@
+{
+  "Login_userNamePasswordForm": {
+    "New user registration": "Registracia noveho uzivatela",
+    "user name": "uzivatelske meno",
+    "email": "email",
+    "password": "heslo",
+    "passwordVerify": "over heslo",
+    "submit": "posli",
+    "submit": "submit",
+    "passwords do not match": "Hesla nesedia."
+  }
+}

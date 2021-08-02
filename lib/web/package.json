@@ -10,10 +10,13 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "rescript": "*"
-  },
   "dependencies": {
-    "@glennsl/bs-json": "^5.0.2"
+    "@glennsl/bs-json": "^5.0.2",
+    "bs-fetch": "^0.6.2"
+  },
+  "devDependencies": {
+    "res-node": "*",
+    "rescript": "*",
+    "@rescript/react": "*"
   }
 }

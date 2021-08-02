@@ -19,7 +19,6 @@
     "@glennsl/bs-json": "^5.0.2",
     "body-parser": "^1.19.0",
     "cookie-parser": "~1.4.4",
-    "crypto-js": "^4.0.0",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "hbs": "~4.0.4",

@@ -5,8 +5,14 @@ FLG -ppx "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modu
 S C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\lib\ocaml
 B C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\lib\ocaml
 FLG -w +a-4-9-20-40-41-42-50-61-102
-S C:\pok\pinaple\apps\rest-api\node_modules\@glennsl\bs-json\lib\ocaml
-B C:\pok\pinaple\apps\rest-api\node_modules\@glennsl\bs-json\lib\ocaml
+S C:\pok\pinaple\apps\portal\node_modules\@glennsl\bs-json\lib\ocaml
+B C:\pok\pinaple\apps\portal\node_modules\@glennsl\bs-json\lib\ocaml
+S C:\pok\pinaple\apps\portal\node_modules\lib-web\node_modules\bs-fetch\lib\ocaml
+B C:\pok\pinaple\apps\portal\node_modules\lib-web\node_modules\bs-fetch\lib\ocaml
+S C:\pok\pinaple\apps\portal\node_modules\@rescript\react\lib\ocaml
+B C:\pok\pinaple\apps\portal\node_modules\@rescript\react\lib\ocaml
+S C:\pok\pinaple\apps\portal\node_modules\lib-web\node_modules\res-node\lib\ocaml
+B C:\pok\pinaple\apps\portal\node_modules\lib-web\node_modules\res-node\lib\ocaml
 S src
 B lib\bs\src
 ####BSB GENERATED: NO EDIT}

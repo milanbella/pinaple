@@ -1,0 +1,45 @@
+rescript = 1
+g_finger := C:\pok\pinaple\apps\portal\node_modules\lib-web\lib\ocaml\install.stamp
+g_finger := C:\pok\pinaple\apps\portal\node_modules\@rescript\react\lib\ocaml\install.stamp
+g_finger := C:\pok\pinaple\apps\portal\node_modules\@glennsl\bs-json\lib\ocaml\install.stamp
+g_finger := C:\pok\pinaple\apps\portal\node_modules\res-hookForm\lib\ocaml\install.stamp
+g_finger := C:\pok\pinaple\apps\portal\node_modules\res-i18next\lib\ocaml\install.stamp
+rule astj
+  command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsc.exe" -w -3 -warn-error +101+8 -bs-v 9.1.4 -bs-jsx 3  -absname -bs-ast -o $out $i
+o src\App.ast : astj ..\..\src\App.res
+rule deps
+  command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsb_helper.exe" -hash 9c541e61747c20b0977ef941169df7fc $in
+  restat = 1
+o src\App.d : deps src\App.ast
+rule mij
+  command = "C:\pok\pinaple\common\temp\node_modules\.pnpm\rescript@9.1.4\node_modules\rescript\win32\bsc.exe" -I "src\bindings" -I "src\components" -I "src\layouts" -I src -I "C:\pok\pinaple\apps\portal\node_modules\lib-web\lib\ocaml" -I "C:\pok\pinaple\apps\portal\node_modules\@rescript\react\lib\ocaml" -I "C:\pok\pinaple\apps\portal\node_modules\@glennsl\bs-json\lib\ocaml" -I "C:\pok\pinaple\apps\portal\node_modules\res-hookForm\lib\ocaml" -I "C:\pok\pinaple\apps\portal\node_modules\res-i18next\lib\ocaml"  -w -3 -warn-error +101+8 -bs-package-name portal -bs-package-output commonjs:$in_d:.bs.js -bs-v $g_finger $i
+  dyndep = 1
+  restat = 1
+o src\App.cmj src\App.cmi ..\..\src\App.bs.js : mij src\App.ast
+o src\Index.ast : astj ..\..\src\Index.res
+o src\Index.d : deps src\Index.ast
+o src\Index.cmj src\Index.cmi ..\..\src\Index.bs.js : mij src\Index.ast
+o src\Examples.ast : astj ..\..\src\Examples.res
+o src\Examples.d : deps src\Examples.ast
+o src\Examples.cmj src\Examples.cmi ..\..\src\Examples.bs.js : mij src\Examples.ast
+o src\RegisterUser.ast : astj ..\..\src\RegisterUser.res
+o src\RegisterUser.d : deps src\RegisterUser.ast
+o src\RegisterUser.cmj src\RegisterUser.cmi ..\..\src\RegisterUser.bs.js : mij src\RegisterUser.ast
+o src\layouts\MainLayout.ast : astj ..\..\src\layouts\MainLayout.res
+o src\layouts\MainLayout.d : deps src\layouts\MainLayout.ast
+o src\layouts\MainLayout.cmj src\layouts\MainLayout.cmi ..\..\src\layouts\MainLayout.bs.js : mij src\layouts\MainLayout.ast
+o src\components\Hello.ast : astj ..\..\src\components\Hello.res
+o src\components\Hello.d : deps src\components\Hello.ast
+o src\components\Hello.cmj src\components\Hello.cmi ..\..\src\components\Hello.bs.js : mij src\components\Hello.ast
+o src\components\ErrorMessage.ast : astj ..\..\src\components\ErrorMessage.res
+o src\components\ErrorMessage.d : deps src\components\ErrorMessage.ast
+o src\components\ErrorMessage.cmj src\components\ErrorMessage.cmi ..\..\src\components\ErrorMessage.bs.js : mij src\components\ErrorMessage.ast
+o src\components\FormFieldError.ast : astj ..\..\src\components\FormFieldError.res
+o src\components\FormFieldError.d : deps src\components\FormFieldError.ast
+o src\components\FormFieldError.cmj src\components\FormFieldError.cmi ..\..\src\components\FormFieldError.bs.js : mij src\components\FormFieldError.ast
+o src\components\Login_userNamePasswordForm.ast : astj ..\..\src\components\Login_userNamePasswordForm.res
+o src\components\Login_userNamePasswordForm.d : deps src\components\Login_userNamePasswordForm.ast
+o src\components\Login_userNamePasswordForm.cmj src\components\Login_userNamePasswordForm.cmi ..\..\src\components\Login_userNamePasswordForm.bs.js : mij src\components\Login_userNamePasswordForm.ast
+o src\bindings\Next.ast : astj ..\..\src\bindings\Next.res
+o src\bindings\Next.d : deps src\bindings\Next.ast
+o src\bindings\Next.cmj src\bindings\Next.cmi ..\..\src\bindings\Next.bs.js : mij src\bindings\Next.ast

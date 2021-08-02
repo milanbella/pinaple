@@ -1,0 +1,26 @@
+{
+  "name": "portal",
+  "namespace": false,
+  "reason": { "react-jsx": 3 },
+  "refmt": 3,
+  "ppx-flags": [],
+  "sources": [
+    { "dir": "src", "subdirs": true }
+  ],
+  "package-specs": {
+    "module": "commonjs",
+    "in-source": true
+  },
+  "suffix": ".bs.js",
+  "warnings": {
+    "number": "-3",
+    "error": "+101+8"
+  },
+  "bs-dependencies": [
+    "lib-web",
+    "@rescript/react",
+    "@glennsl/bs-json",
+    "res-hookForm",
+    "res-i18next"
+  ]
+}

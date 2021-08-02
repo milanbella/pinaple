@@ -1,0 +1,20 @@
+{
+  "name": "res-hookForm",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rescript",
+    "clean": "rescript clean -with-deps",
+    "start": "rescript build -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react-hook-form": "^7.12.1"
+  },
+  "devDependencies": {
+    "rescript": "*",
+    "@rescript/react": "*"
+  }
+}
