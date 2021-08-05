@@ -6,26 +6,32 @@ var Link = require("next/link").default;
 
 function MainLayout$Navigation(Props) {
   return React.createElement("nav", {
-              className: "p-2 h-12 flex border-b border-gray-200 justify-between items-center text-sm"
+              className: "bg-indigo-600 flex ext-sm text-white flex-col items-center md:flex-row md:justify-around lg:justify-end"
             }, React.createElement("div", {
-                  className: "flex w-2/3 justify-end"
+                  className: "hover:bg-blue-600 h-14 flex items-center justify-center w-full md:w-auto"
                 }, React.createElement(Link, {
                       href: "/",
                       children: React.createElement("a", {
-                            className: "px-3"
+                            className: "mx-3"
                           }, "Home")
-                    }), React.createElement(Link, {
+                    })), React.createElement("div", {
+                  className: "hover:bg-blue-600 h-14 flex items-center justify-center w-full md:w-auto"
+                }, React.createElement(Link, {
                       href: "/examples",
                       children: React.createElement("a", {
-                            className: "px-3"
+                            className: "mx-3"
                           }, "Examples")
-                    }), React.createElement(Link, {
+                    })), React.createElement("div", {
+                  className: "hover:bg-blue-600 h-14 flex items-center justify-center w-full md:w-auto"
+                }, React.createElement(Link, {
                       href: "/register_user",
                       children: React.createElement("a", {
-                            className: "px-3"
+                            className: "mx-3"
                           }, "Register")
-                    }), React.createElement("a", {
-                      className: "px-3 font-bold",
+                    })), React.createElement("div", {
+                  className: "hover:bg-blue-600 h-14 flex items-center justify-center w-full md:w-auto"
+                }, React.createElement("a", {
+                      className: "font-bold mx-3",
                       href: "https://github.com/ryyppy/nextjs-default",
                       target: "_blank"
                     }, "Github")));
@@ -41,10 +47,10 @@ function MainLayout(Props) {
     minWidth: "20rem"
   };
   return React.createElement("div", {
-              className: "flex lg:justify-center",
+              className: "flex lg:justify-center bg-gray-100",
               style: minWidth
             }, React.createElement("div", {
-                  className: "max-w-5xl w-full lg:w-3/4 text-gray-900 font-base"
+                  className: "w-full text-gray-900 font-base"
                 }, React.createElement(MainLayout$Navigation, {}), React.createElement("main", {
                       className: "mt-4 mx-4"
                     }, children)));

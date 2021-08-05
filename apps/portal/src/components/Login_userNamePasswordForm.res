@@ -121,45 +121,35 @@ let make = () => {
 
   //<div className=""> <input type_="text" onChange={hfUserName.onChange} onBlur={hfUserName.onBlur} ref={ReactDOM.Ref.callbackDomRef(hfUserName.ref)} name={hfUserName.name} /> </div>
 
-  <div className="">
-    <form onSubmit={handleSubmit(. ~dataHandler=handleSubmitData)}>
-      <div className="">
-        <header className="">
-           <p className="">{React.string(t(. `${componentName}.New user registration`))}</p>
-        </header>
-        <div className="">
-            <div className="">
-              <div className="">
-                <div className="">
-                  <label className="" > {React.string(t(. `${componentName}.user name`))}</label>
-                  <div className=""> <input type_="text" onChange={hfUserName.onChange} onBlur={hfUserName.onBlur} ref={ReactDOM.Ref.callbackDomRef(hfUserName.ref)} name={hfUserName.name} /> </div>
-                  {showError("userName", "required", "user name is required")}
-                </div>
-                <div className="">
-                  <label className="label"> {React.string(t(. `${componentName}.email`))}</label>
-                  <div className=""> <input type_="text" onChange={hfUserEmail.onChange} onBlur={hfUserEmail.onBlur} ref={ReactDOM.Ref.callbackDomRef(hfUserEmail.ref)} name={hfUserEmail.name} /> </div>
-                  {showError("userEmail", "required", "user email is required")}
-                  {showError("userEmail", "pattern", "wrong format")}
-                </div>
-                <div className="">
-                  <label className=""> {React.string(t(. `${componentName}.password`))} </label>
-                  <div className=""> <input type_="password" onChange={hfPassword.onChange} onBlur={hfPassword.onBlur} ref={ReactDOM.Ref.callbackDomRef(hfPassword.ref)} name={hfPassword.name} /> </div>
-                  {showError("password", "required", "password is required")}
-                </div>
-                <div className="">
-                  <label className=""> {React.string(t(. `${componentName}.passwordVerify`))} </label>
-                  <div className=""> <input type_="passwordVerify"onChange={hfPasswordVerify.onChange} onBlur={hfPasswordVerify.onBlur} ref={ReactDOM.Ref.callbackDomRef(hfPasswordVerify.ref)} name={hfPasswordVerify.name} /> </div>
-                  {showError("passwordVerify", "required", "please reatype password")}
-                </div>
-                <ErrorMessage msgKey={"passwords do not match"} />
-              </div>
-            </div>
-        </div>
-        <footer className="">
-          <div className="">
-              <button className="" type_="submit"> {React.string(t(. `${componentName}.submit`))} </button>
-          </div>
-        </footer>
+  <div className="w-full flex justify-center">
+    <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full md:w-auto" onSubmit={handleSubmit(. ~dataHandler=handleSubmitData)}>
+      <div className="font-bold flex justify-center pb-4 border-b border-color-gray-500">{React.string(t(. `${componentName}.New user registration`))}</div>
+      <div className="mb-4 mt-4">
+        <label className="block text-gray-500 text-sm font-bold mb-2" > {React.string(t(. `${componentName}.user name`))}</label>
+        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type_="text" onChange={hfUserName.onChange} onBlur={hfUserName.onBlur} ref={ReactDOM.Ref.callbackDomRef(hfUserName.ref)} name={hfUserName.name} /> 
+        {showError("userName", "required", "user name is required")}
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-500 text-sm font-bold mb-2"> {React.string(t(. `${componentName}.email`))}</label>
+        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type_="text" onChange={hfUserEmail.onChange} onBlur={hfUserEmail.onBlur} ref={ReactDOM.Ref.callbackDomRef(hfUserEmail.ref)} name={hfUserEmail.name} /> 
+        {showError("userEmail", "required", "user email is required")}
+        {showError("userEmail", "pattern", "wrong format")}
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-500 text-sm font-bold mb-2"> {React.string(t(. `${componentName}.password`))} </label>
+        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type_="password" onChange={hfPassword.onChange} onBlur={hfPassword.onBlur} ref={ReactDOM.Ref.callbackDomRef(hfPassword.ref)} name={hfPassword.name} />
+        {showError("password", "required", "password is required")}
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-500 text-sm font-bold mb-2"> {React.string(t(. `${componentName}.passwordVerify`))} </label>
+        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type_="passwordVerify"onChange={hfPasswordVerify.onChange} onBlur={hfPasswordVerify.onBlur} ref={ReactDOM.Ref.callbackDomRef(hfPasswordVerify.ref)} name={hfPasswordVerify.name} /> 
+        {showError("passwordVerify", "required", "please reatype password")}
+      </div>
+      <ErrorMessage msgKey={"passwords do not match"} />
+
+      <div className="flex justify-center border-t border-color-gray-500 pt-4 mt-6">
+          //<button className="bg-blue-500 hover:bg-blue-700 text-white font-bol px-4 py-2 rounded focus:outline-none focus:ring-4 focus:ring-green-500" type_="submit"> {React.string(t(. `${componentName}.submit`))} </button>
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bol px-4 py-2 rounded focus:outline-none focus:ring-1 focus:ring-blue-700" > {React.string(t(. `${componentName}.submit`))} </button>
       </div>
     </form>
   </div>

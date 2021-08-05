@@ -137,79 +137,63 @@ function Login_userNamePasswordForm(Props) {
   var hfPassword = register("password", HookForm$ResHookForm.makeRegisterOptions(true, undefined, undefined, undefined, undefined, undefined, undefined));
   var hfPasswordVerify = register("passwordVerify", HookForm$ResHookForm.makeRegisterOptions(true, undefined, undefined, undefined, undefined, undefined, undefined));
   return React.createElement("div", {
-              className: ""
+              className: "w-full flex justify-center"
             }, React.createElement("form", {
+                  className: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full md:w-auto",
                   onSubmit: match$1.handleSubmit(handleSubmitData)
                 }, React.createElement("div", {
-                      className: ""
-                    }, React.createElement("header", {
-                          className: ""
-                        }, React.createElement("p", {
-                              className: ""
-                            }, t(componentName + ".New user registration"))), React.createElement("div", {
-                          className: ""
-                        }, React.createElement("div", {
-                              className: ""
-                            }, React.createElement("div", {
-                                  className: ""
-                                }, React.createElement("div", {
-                                      className: ""
-                                    }, React.createElement("label", {
-                                          className: ""
-                                        }, t(componentName + ".user name")), React.createElement("div", {
-                                          className: ""
-                                        }, React.createElement("input", {
-                                              ref: hfUserName.ref,
-                                              name: hfUserName.name,
-                                              type: "text",
-                                              onBlur: hfUserName.onBlur,
-                                              onChange: hfUserName.onChange
-                                            })), showError("userName", "required", "user name is required")), React.createElement("div", {
-                                      className: ""
-                                    }, React.createElement("label", {
-                                          className: "label"
-                                        }, t(componentName + ".email")), React.createElement("div", {
-                                          className: ""
-                                        }, React.createElement("input", {
-                                              ref: hfUserEmail.ref,
-                                              name: hfUserEmail.name,
-                                              type: "text",
-                                              onBlur: hfUserEmail.onBlur,
-                                              onChange: hfUserEmail.onChange
-                                            })), showError("userEmail", "required", "user email is required"), showError("userEmail", "pattern", "wrong format")), React.createElement("div", {
-                                      className: ""
-                                    }, React.createElement("label", {
-                                          className: ""
-                                        }, t(componentName + ".password")), React.createElement("div", {
-                                          className: ""
-                                        }, React.createElement("input", {
-                                              ref: hfPassword.ref,
-                                              name: hfPassword.name,
-                                              type: "password",
-                                              onBlur: hfPassword.onBlur,
-                                              onChange: hfPassword.onChange
-                                            })), showError("password", "required", "password is required")), React.createElement("div", {
-                                      className: ""
-                                    }, React.createElement("label", {
-                                          className: ""
-                                        }, t(componentName + ".passwordVerify")), React.createElement("div", {
-                                          className: ""
-                                        }, React.createElement("input", {
-                                              ref: hfPasswordVerify.ref,
-                                              name: hfPasswordVerify.name,
-                                              type: "passwordVerify",
-                                              onBlur: hfPasswordVerify.onBlur,
-                                              onChange: hfPasswordVerify.onChange
-                                            })), showError("passwordVerify", "required", "please reatype password")), React.createElement(ErrorMessage.make, {
-                                      msgKey: "passwords do not match"
-                                    })))), React.createElement("footer", {
-                          className: ""
-                        }, React.createElement("div", {
-                              className: ""
-                            }, React.createElement("button", {
-                                  className: "",
-                                  type: "submit"
-                                }, t(componentName + ".submit")))))));
+                      className: "font-bold flex justify-center pb-4 border-b border-color-gray-500"
+                    }, t(componentName + ".New user registration")), React.createElement("div", {
+                      className: "mb-4 mt-4"
+                    }, React.createElement("label", {
+                          className: "block text-gray-500 text-sm font-bold mb-2"
+                        }, t(componentName + ".user name")), React.createElement("input", {
+                          ref: hfUserName.ref,
+                          className: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+                          name: hfUserName.name,
+                          type: "text",
+                          onBlur: hfUserName.onBlur,
+                          onChange: hfUserName.onChange
+                        }), showError("userName", "required", "user name is required")), React.createElement("div", {
+                      className: "mb-4"
+                    }, React.createElement("label", {
+                          className: "block text-gray-500 text-sm font-bold mb-2"
+                        }, t(componentName + ".email")), React.createElement("input", {
+                          ref: hfUserEmail.ref,
+                          className: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+                          name: hfUserEmail.name,
+                          type: "text",
+                          onBlur: hfUserEmail.onBlur,
+                          onChange: hfUserEmail.onChange
+                        }), showError("userEmail", "required", "user email is required"), showError("userEmail", "pattern", "wrong format")), React.createElement("div", {
+                      className: "mb-4"
+                    }, React.createElement("label", {
+                          className: "block text-gray-500 text-sm font-bold mb-2"
+                        }, t(componentName + ".password")), React.createElement("input", {
+                          ref: hfPassword.ref,
+                          className: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+                          name: hfPassword.name,
+                          type: "password",
+                          onBlur: hfPassword.onBlur,
+                          onChange: hfPassword.onChange
+                        }), showError("password", "required", "password is required")), React.createElement("div", {
+                      className: "mb-4"
+                    }, React.createElement("label", {
+                          className: "block text-gray-500 text-sm font-bold mb-2"
+                        }, t(componentName + ".passwordVerify")), React.createElement("input", {
+                          ref: hfPasswordVerify.ref,
+                          className: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+                          name: hfPasswordVerify.name,
+                          type: "passwordVerify",
+                          onBlur: hfPasswordVerify.onBlur,
+                          onChange: hfPasswordVerify.onChange
+                        }), showError("passwordVerify", "required", "please reatype password")), React.createElement(ErrorMessage.make, {
+                      msgKey: "passwords do not match"
+                    }), React.createElement("div", {
+                      className: "flex justify-center border-t border-color-gray-500 pt-4 mt-6"
+                    }, React.createElement("button", {
+                          className: "bg-blue-500 hover:bg-blue-700 text-white font-bol px-4 py-2 rounded focus:outline-none focus:ring-1 focus:ring-blue-700"
+                        }, t(componentName + ".submit")))));
 }
 
 var make = Login_userNamePasswordForm;

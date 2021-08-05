@@ -20,9 +20,7 @@ function $$default(props) {
                       }, "Examples Section"), React.createElement("div", undefined, content));
     case "/register_user" :
         return React.createElement(MainLayout.make, {
-                    children: React.createElement("h1", {
-                          className: "font-bold"
-                        }, React.createElement("div", undefined, content))
+                    children: React.createElement("div", undefined, content)
                   });
     default:
       return React.createElement(MainLayout.make, {

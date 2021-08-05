@@ -32,7 +32,7 @@ let default = (props: props): React.element => {
     </MainLayout>
   | "/register_user" =>
     <MainLayout>
-      <h1 className="font-bold">  <div> content </div> </h1>
+      <div> content </div> 
     </MainLayout>
   | _ => <MainLayout> content </MainLayout>
   }

@@ -1,5 +1,5 @@
-//import '../styles/main.css'
-import 'tailwindcss/tailwind.css'
+import '../styles/main.css'
+//import 'tailwindcss/tailwind.css'
 
 import { appWithTranslation } from 'next-i18next';
 
