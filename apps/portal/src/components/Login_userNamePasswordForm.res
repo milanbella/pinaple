@@ -126,7 +126,7 @@ let make = () => {
   //<div className=""> <input type_="text" onChange={hfUserName.onChange} onBlur={hfUserName.onBlur} ref={ReactDOM.Ref.callbackDomRef(hfUserName.ref)} name={hfUserName.name} /> </div>
 
   <div className="w-full flex justify-center">
-    <form className="md:shadow-lg md:rounded md:bg-gray-100 px-8 pt-8 pb-8 mb-4 flex-grow md:flex-grow-0" onSubmit={handleSubmit(. ~dataHandler=handleSubmitData)}>
+    <form className="md:shadow-lg md:rounded md:bg-gray-100 px-8 pt-8 pb-8 mb-4 md:mt-8 flex-grow md:flex-grow-0" onSubmit={handleSubmit(. ~dataHandler=handleSubmitData)}>
       <div className="font-bold text-2xl flex pb-4">{React.string(t(. `${componentName}.New user registration`))}</div>
       <div className="mb-8 mt-4">
         <label className="block text-gray-500 text-sm font-bold mb-2" > {React.string(t(. `${componentName}.user name`))}<span className="text-red-500">{React.string("*")}</span></label>
