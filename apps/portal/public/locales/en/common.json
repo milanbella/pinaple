@@ -6,6 +6,13 @@
     "password": "password",
     "passwordVerify": "verify password",
     "submit": "submit",
+
+    "user name is required": "user name is required",
+    "user email is required": "user email is required",
+    "wrong format": "wrong format",
+    "password is required": "password is required",
+    "please retype password": "please reatype password",
+
     "passwords do not match": "Passwords do not match."
   }
 }

@@ -21,7 +21,7 @@ function $$default(param) {
                   children: " This is a simple template for a Next\n      project using ReScript & TailwindCSS."
                 }), React.createElement("h2", {
                   className: "text-2xl font-semibold mt-5"
-                }, "Quick Start"), React.createElement("pre", undefined, "git clone https://github.com/rescript-nextjs-template.git my-project\ncd my-project\nrm -rf .git"));
+                }, "Quick Start"), React.createElement("p", undefined, "git clone https://github.com/rescript-nextjs-template.git my-project\ncd my-project\nrm -rf .git"));
 }
 
 exports.P = P;

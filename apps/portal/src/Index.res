@@ -11,9 +11,9 @@ let default = () =>
       project using ReScript & TailwindCSS.`)}
     </P>
     <h2 className="text-2xl font-semibold mt-5"> {React.string("Quick Start")} </h2>
-    <pre>
+    <p>
       {React.string(`git clone https://github.com/rescript-nextjs-template.git my-project
 cd my-project
 rm -rf .git`)} //github.com/ryyppy/nextjs-default.git my-project
-    </pre>
+    </p>
   </div>

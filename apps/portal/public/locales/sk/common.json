@@ -6,7 +6,13 @@
     "password": "heslo",
     "passwordVerify": "over heslo",
     "submit": "posli",
-    "submit": "submit",
+
+    "user name is required": "uzivatelske meno je povinne",
+    "user email is required": "uzivatelsky email je povinny",
+    "wrong format": "zly format",
+    "password is required": "heslo je povinne",
+    "please retype password": "prosim znova zadaj heslo",
+
     "passwords do not match": "Hesla nesedia."
   }
 }

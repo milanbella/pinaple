@@ -7,6 +7,7 @@ var NextI18next = require("next-i18next");
 
 function ErrorMessage(Props) {
   var msgKey = Props.msgKey;
+  var className = Props.className;
   var match = React.useState(function () {
         return false;
       });
@@ -29,7 +30,7 @@ function ErrorMessage(Props) {
                                           }));
                             })
                         })), React.createElement("div", {
-                      className: ""
+                      className: className
                     }, t(msgKey)));
     } else {
       return "";

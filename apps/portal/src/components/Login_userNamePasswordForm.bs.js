@@ -11,7 +11,6 @@ var Json_encode = require("@glennsl/bs-json/src/Json_encode.bs.js");
 var ErrorMessage = require("./ErrorMessage.bs.js");
 var NextI18next = require("next-i18next");
 var Logger$LibWeb = require("lib-web/src/Logger.bs.js");
-var FormFieldError = require("./FormFieldError.bs.js");
 var ReactHookForm = require("react-hook-form");
 var Caml_js_exceptions = require("rescript/lib/js/caml_js_exceptions.js");
 var HookForm$ResHookForm = require("res-hookForm/src/hookForm.bs.js");
@@ -118,16 +117,16 @@ function Login_userNamePasswordForm(Props) {
                   }));
     }
   };
-  var showError = function (field, vtype, msg) {
+  var showError = function (field, vtype, msg, className) {
     if (errors == null) {
       return "";
     }
     var err = Js_dict.get(errors, field);
     if (err !== undefined && Caml_option.valFromOption(err).type === vtype) {
       console.log("error: " + field);
-      return React.createElement(FormFieldError.make, {
-                  msg: msg
-                });
+      return React.createElement("span", {
+                  className: className
+                }, t(msg));
     } else {
       return "";
     }
@@ -139,23 +138,25 @@ function Login_userNamePasswordForm(Props) {
   return React.createElement("div", {
               className: "w-full flex justify-center"
             }, React.createElement("form", {
-                  className: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full md:w-auto",
+                  className: "md:shadow-lg md:rounded md:bg-gray-100 px-8 pt-8 pb-8 mb-4 flex-grow md:flex-grow-0",
                   onSubmit: match$1.handleSubmit(handleSubmitData)
                 }, React.createElement("div", {
-                      className: "font-bold flex justify-center pb-4 border-b border-color-gray-500"
+                      className: "font-bold text-2xl flex pb-4"
                     }, t(componentName + ".New user registration")), React.createElement("div", {
-                      className: "mb-4 mt-4"
+                      className: "mb-8 mt-4"
                     }, React.createElement("label", {
                           className: "block text-gray-500 text-sm font-bold mb-2"
-                        }, t(componentName + ".user name")), React.createElement("input", {
+                        }, t(componentName + ".user name"), React.createElement("span", {
+                              className: "text-red-500"
+                            }, "*")), React.createElement("input", {
                           ref: hfUserName.ref,
                           className: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
                           name: hfUserName.name,
                           type: "text",
                           onBlur: hfUserName.onBlur,
                           onChange: hfUserName.onChange
-                        }), showError("userName", "required", "user name is required")), React.createElement("div", {
-                      className: "mb-4"
+                        }), showError("userName", "required", "user name is required", "text-red-500")), React.createElement("div", {
+                      className: "mb-8"
                     }, React.createElement("label", {
                           className: "block text-gray-500 text-sm font-bold mb-2"
                         }, t(componentName + ".email")), React.createElement("input", {
@@ -165,8 +166,8 @@ function Login_userNamePasswordForm(Props) {
                           type: "text",
                           onBlur: hfUserEmail.onBlur,
                           onChange: hfUserEmail.onChange
-                        }), showError("userEmail", "required", "user email is required"), showError("userEmail", "pattern", "wrong format")), React.createElement("div", {
-                      className: "mb-4"
+                        }), showError("userEmail", "required", "user email is required", "text-red-500"), showError("userEmail", "pattern", "wrong format", "text-red-500")), React.createElement("div", {
+                      className: "mb-8"
                     }, React.createElement("label", {
                           className: "block text-gray-500 text-sm font-bold mb-2"
                         }, t(componentName + ".password")), React.createElement("input", {
@@ -176,8 +177,8 @@ function Login_userNamePasswordForm(Props) {
                           type: "password",
                           onBlur: hfPassword.onBlur,
                           onChange: hfPassword.onChange
-                        }), showError("password", "required", "password is required")), React.createElement("div", {
-                      className: "mb-4"
+                        }), showError("password", "required", "password is required", "text-red-500")), React.createElement("div", {
+                      className: "mb-8"
                     }, React.createElement("label", {
                           className: "block text-gray-500 text-sm font-bold mb-2"
                         }, t(componentName + ".passwordVerify")), React.createElement("input", {
@@ -187,10 +188,11 @@ function Login_userNamePasswordForm(Props) {
                           type: "passwordVerify",
                           onBlur: hfPasswordVerify.onBlur,
                           onChange: hfPasswordVerify.onChange
-                        }), showError("passwordVerify", "required", "please reatype password")), React.createElement(ErrorMessage.make, {
-                      msgKey: "passwords do not match"
+                        }), showError("passwordVerify", "required", "please retype password", "text-red-500")), React.createElement(ErrorMessage.make, {
+                      msgKey: "passwords do not match",
+                      className: ""
                     }), React.createElement("div", {
-                      className: "flex justify-center border-t border-color-gray-500 pt-4 mt-6"
+                      className: "flex justify-center pt-4 mt-6"
                     }, React.createElement("button", {
                           className: "bg-blue-500 hover:bg-blue-700 text-white font-bol px-4 py-2 rounded focus:outline-none focus:ring-1 focus:ring-blue-700"
                         }, t(componentName + ".submit")))));

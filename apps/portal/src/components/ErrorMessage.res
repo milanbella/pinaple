@@ -1,5 +1,5 @@
 @react.component
-let make = (~msgKey: string) => {
+let make = (~msgKey: string, ~className: string) => {
 
   let (isDisplayed, setIsDisplayed) = React.useState(() => false)
   let {t, _} = ResI18next.M.useTranslation()
@@ -11,7 +11,7 @@ let make = (~msgKey: string) => {
         <div className="">
            <button className="" ariaLabel="" onClick={_ => setIsDisplayed(_ => false)}></button>
         </div>
-        <div className="">
+        <div className=`${className}`>
           {React.string(t(. msgKey))}
         </div>
       </article>
